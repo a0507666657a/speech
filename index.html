@@ -3,67 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speech Therapy Rehabilitation Guidelines</title>
+    <title>Speech Therapy Rehabilitation Resource Hub</title>
     <style>
+        :root {
+            --primary: #2c698d;
+            --secondary: #bae8e8;
+            --accent: #e3f6f5;
+            --text: #272343;
+            --light: #fff;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
         }
-
+        
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            color: var(--text);
             background-color: #f5f5f5;
         }
-
-        header {
-            background-color: #4a90e2;
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-
+        
         .container {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 30px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
-        h1 {
+        
+        header h1 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 10px;
         }
-
-        h2 {
-            color: #4a90e2;
-            margin: 2rem 0 1rem;
-            border-bottom: 2px solid #4a90e2;
-            padding-bottom: 0.5rem;
+        
+        nav {
+            background-color: var(--secondary);
+            padding: 15px 0;
         }
-
-        .video-section {
-            margin: 2rem 0;
-            padding: 1rem;
-            background-color: #f8f9fa;
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--text);
+            background-color: var(--accent);
+        }
+        
+        .hero {
+            background-color: var(--accent);
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #1e4c66;
+            transform: translateY(-2px);
+        }
+        
+        section {
+            padding: 50px 0;
+        }
+        
+        section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: var(--light);
             border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            width: 350px;
         }
-
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .card p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
         .video-container {
             position: relative;
-            padding-bottom: 56.25%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
-            margin: 1rem 0;
         }
-
+        
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -72,272 +167,285 @@
             height: 100%;
             border: none;
         }
-
-        ul {
-            list-style-type: none;
-            padding-left: 1.5rem;
+        
+        .resources {
+            background-color: var(--accent);
         }
-
-        li {
-            margin-bottom: 1rem;
-            position: relative;
+        
+        .resource-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
         }
-
-        li:before {
-            content: "•";
-            color: #4a90e2;
-            font-weight: bold;
-            position: absolute;
-            left: -1.5rem;
-        }
-
-        .note {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
-
-        .sources {
-            background-color: #f8f9fa;
-            padding: 1.5rem;
+        
+        .resource-item {
+            background-color: var(--light);
+            padding: 20px;
             border-radius: 8px;
-            margin-top: 1rem;
+            width: 280px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
-
-        .sources h3 {
-            color: #2c3e50;
-            margin: 1.5rem 0 1rem;
-            font-size: 1.2rem;
+        
+        .resource-item h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
         }
-
-        .sources h3:first-child {
-            margin-top: 0;
+        
+        .resource-item ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
         }
-
-        .sources ul {
-            margin-bottom: 1.5rem;
+        
+        .resource-item ul li {
+            margin-bottom: 8px;
         }
-
-        .sources a {
-            color: #4a90e2;
+        
+        .resource-item a {
+            color: var(--primary);
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-weight: 600;
         }
-
-        .sources a:hover {
-            color: #2c3e50;
+        
+        .resource-item a:hover {
             text-decoration: underline;
         }
-
-        .sources li {
-            margin-bottom: 0.5rem;
+        
+        footer {
+            background-color: var(--primary);
+            color: var(--light);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
         }
-
-        /* Exercise section styling */
-        section h3 {
-            color: #2c3e50;
-            margin: 2rem 0 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #e0e0e0;
+        
+        footer p {
+            margin-bottom: 15px;
         }
-
-        section h3:first-of-type {
-            margin-top: 1rem;
+        
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
         }
-
-        .video-container {
-            margin: 1.5rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
+        
+        footer a:hover {
+            text-decoration: underline;
         }
-
-        section ul {
-            background-color: #f8f9fa;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0 2rem;
-        }
-
-        section li {
-            margin-bottom: 0.75rem;
-        }
-
-        section li:last-child {
-            margin-bottom: 0;
+        
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 8px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Speech Therapy Rehabilitation Guidelines</h1>
-        <p>Comprehensive guide for speech therapy exercises and resources</p>
-    </header>
-
-    <div class="container">
-        <section>
-            <h2>Basic Speech Therapy Exercises</h2>
-            <p>These fundamental exercises can help improve speech clarity and articulation:</p>
-            
-            <h3>Lip Exercises</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/8jLoDZQvXgY"
-                        title="Lip Exercises for Speech"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-            <ul>
-                <li>Pucker and stretch lips</li>
-                <li>Lip rounding exercises</li>
-                <li>Lip strength training</li>
-            </ul>
-
-            <h3>Tongue Exercises</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/1lCCjWj1HLY"
-                        title="Tongue Exercises for Speech"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-            <ul>
-                <li>Move tongue in different directions</li>
-                <li>Tongue tip elevation</li>
-                <li>Tongue lateralization</li>
-            </ul>
-
-            <h3>Breathing Exercises</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/3IuXQ8B7GvU"
-                        title="Breathing Exercises for Speech"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-            <ul>
-                <li>Deep breathing techniques</li>
-                <li>Controlled exhalation</li>
-                <li>Diaphragmatic breathing</li>
-            </ul>
-
-            <h3>Vowel Sounds Practice</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/8jLoDZQvXgY"
-                        title="Vowel Sounds Practice"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-            <ul>
-                <li>Long vowel sounds (a, e, i, o, u)</li>
-                <li>Short vowel sounds</li>
-                <li>Vowel combinations</li>
-            </ul>
-
-            <h3>Consonant Practice</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/1lCCjWj1HLY"
-                        title="Consonant Practice"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-            <ul>
-                <li>Focus on difficult sounds</li>
-                <li>Consonant blends</li>
-                <li>Sound production techniques</li>
-            </ul>
-        </section>
-
-        <section class="video-section">
-            <h2>Recommended Video Exercises</h2>
-            
-            <h3>Basic Articulation Exercises</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/1lCCjWj1HLY" 
-                        title="Basic Articulation Exercises"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-
-            <h3>Breathing Techniques</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/8jLoDZQvXgY"
-                        title="Breathing Techniques for Speech"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-
-            <h3>Advanced Speech Exercises</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/3IuXQ8B7GvU"
-                        title="Advanced Speech Exercises"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-        </section>
-
-        <section>
-            <h2>Daily Practice Tips</h2>
-            <ul>
-                <li>Practice for 15-20 minutes daily</li>
-                <li>Record yourself to track progress</li>
-                <li>Start with easier exercises and gradually increase difficulty</li>
-                <li>Stay hydrated during practice sessions</li>
-                <li>Take breaks when needed</li>
-            </ul>
-        </section>
-
-        <div class="note">
-            <strong>Important Note:</strong> These exercises are general guidelines. Always consult with a licensed speech therapist for personalized treatment plans and professional guidance.
+        <div class="container">
+            <h1>Speech Therapy Rehabilitation Resource Hub</h1>
+            <p>Evidence-based resources for speech-language pathologists and patients</p>
         </div>
-
-        <section>
-            <h2>Additional Resources</h2>
+    </header>
+    
+    <nav>
+        <div class="container">
             <ul>
-                <li>American Speech-Language-Hearing Association (ASHA)</li>
-                <li>Local speech therapy clinics</li>
-                <li>Online speech therapy communities</li>
-                <li>Mobile apps for speech practice</li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#exercises">Exercises</a></li>
+                <li><a href="#disorders">Disorders</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </section>
-
-        <section>
-            <h2>Sources and References</h2>
-            <div class="sources">
-                <h3>Professional Organizations</h3>
-                <ul>
-                    <li><a href="https://www.asha.org" target="_blank">American Speech-Language-Hearing Association (ASHA)</a> - Professional organization for speech-language pathologists</li>
-                    <li><a href="https://www.rcslt.org" target="_blank">Royal College of Speech and Language Therapists (RCSLT)</a> - UK professional body</li>
-                    <li><a href="https://www.speechpathology.com" target="_blank">SpeechPathology.com</a> - Professional development resources</li>
-                </ul>
-
-                <h3>Research and Publications</h3>
-                <ul>
-                    <li>Journal of Speech, Language, and Hearing Research</li>
-                    <li>American Journal of Speech-Language Pathology</li>
-                    <li>International Journal of Speech-Language Pathology</li>
-                </ul>
-
-                <h3>Educational Resources</h3>
-                <ul>
-                    <li><a href="https://www.nidcd.nih.gov" target="_blank">National Institute on Deafness and Other Communication Disorders (NIDCD)</a></li>
-                    <li><a href="https://www.cdc.gov/ncbddd/actearly/index.html" target="_blank">CDC's Learn the Signs. Act Early.</a></li>
-                    <li><a href="https://www.understood.org" target="_blank">Understood.org</a> - Resources for learning and thinking differences</li>
-                </ul>
-
-                <h3>Mobile Applications</h3>
-                <ul>
-                    <li>Speech Blubs - Speech therapy app for children</li>
-                    <li>Articulation Station - Practice speech sounds</li>
-                    <li>Speech Tutor - Visual speech exercises</li>
-                </ul>
-
-                <h3>Online Communities</h3>
-                <ul>
-                    <li>Speech Therapy Facebook Groups</li>
-                    <li>Reddit r/slp community</li>
-                    <li>Speech Therapy Forums</li>
-                </ul>
+        </div>
+    </nav>
+    
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Empowering Communication Through Rehabilitation</h2>
+            <p>Welcome to our comprehensive speech therapy resource hub. Whether you're a speech-language pathologist, a patient, or a caregiver, we provide evidence-based resources to support speech and language rehabilitation.</p>
+            <a href="#exercises" class="btn">Explore Exercises</a>
+        </div>
+    </section>
+    
+    <section id="exercises">
+        <div class="container">
+            <h2>Speech Therapy Exercises</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="/api/placeholder/350/197" alt="Speech Exercise Video Placeholder"></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3>Articulation Exercises</h3>
+                        <p>These exercises focus on improving the clarity of speech sounds and are beneficial for individuals with articulation disorders or speech sound disorders.</p>
+                        <a href="https://www.youtube.com/watch?v=sD4i_6xu1GQ" class="btn" target="_blank">Watch Tutorial</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="/api/placeholder/350/197" alt="Speech Exercise Video Placeholder"></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3>Fluency Techniques</h3>
+                        <p>Learn techniques to improve speech fluency, reduce stuttering, and enhance the overall flow of verbal communication.</p>
+                        <a href="https://www.youtube.com/watch?v=9sKlRJWkNp0" class="btn" target="_blank">Watch Tutorial</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="/api/placeholder/350/197" alt="Speech Exercise Video Placeholder"></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3>Voice Therapy Exercises</h3>
+                        <p>These exercises are designed to improve vocal quality, pitch control, and vocal hygiene for individuals with voice disorders.</p>
+                        <a href="https://www.youtube.com/watch?v=LB987kHUy8M" class="btn" target="_blank">Watch Tutorial</a>
+                    </div>
+                </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+    
+    <section id="disorders">
+        <div class="container">
+            <h2>Speech & Language Disorders</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="/api/placeholder/350/197" alt="Aphasia Video Placeholder"></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3>Aphasia Rehabilitation</h3>
+                        <p>Resources and techniques for individuals recovering from aphasia, a language disorder commonly caused by stroke or brain injury.</p>
+                        <a href="https://www.youtube.com/watch?v=zjkgSCIXo0s" class="btn" target="_blank">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="/api/placeholder/350/197" alt="Dysarthria Video Placeholder"></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3>Dysarthria Management</h3>
+                        <p>Strategies for improving speech clarity, loudness, and rate for those with dysarthria, which affects the muscles used for speech.</p>
+                        <a href="https://www.youtube.com/watch?v=hGSQ0KOZm4E" class="btn" target="_blank">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="video-container">
+                        <iframe src="/api/placeholder/350/197" alt="Childhood Speech Disorders Video Placeholder"></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h3>Childhood Speech Disorders</h3>
+                        <p>Resources for pediatric speech therapy, including developmental speech delays, phonological disorders, and childhood apraxia of speech.</p>
+                        <a href="https://www.youtube.com/watch?v=PKU8IEGcjKs" class="btn" target="_blank">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="resources" id="resources">
+        <div class="container">
+            <h2>Professional Resources</h2>
+            <div class="resource-list">
+                <div class="resource-item">
+                    <h3>Assessment Tools</h3>
+                    <ul>
+                        <li>Standardized Assessments</li>
+                        <li>Informal Evaluation Methods</li>
+                        <li>Progress Monitoring Tools</li>
+                    </ul>
+                    <a href="https://www.asha.org/slp/assessment/" target="_blank">ASHA Assessment Resources</a>
+                </div>
+                
+                <div class="resource-item">
+                    <h3>Evidence-Based Practice</h3>
+                    <ul>
+                        <li>Research Articles</li>
+                        <li>Clinical Practice Guidelines</li>
+                        <li>Systematic Reviews</li>
+                    </ul>
+                    <a href="https://www.speechbite.com/" target="_blank">SpeechBITE Database</a>
+                </div>
+                
+                <div class="resource-item">
+                    <h3>Professional Development</h3>
+                    <ul>
+                        <li>Continuing Education</li>
+                        <li>Webinars & Workshops</li>
+                        <li>Conference Information</li>
+                    </ul>
+                    <a href="https://www.asha.org/ce/" target="_blank">ASHA CE Opportunities</a>
+                </div>
+                
+                <div class="resource-item">
+                    <h3>Patient Resources</h3>
+                    <ul>
+                        <li>Home Practice Materials</li>
+                        <li>Educational Handouts</li>
+                        <li>Support Group Information</li>
+                    </ul>
+                    <a href="https://www.aphasia.org/aphasia-resources/" target="_blank">National Aphasia Association</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>Connect With Us</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Professional Consultation</h3>
+                        <p>Our team of speech-language pathologists is available for professional consultation and collaboration. Contact us to discuss your clinical questions or specific patient needs.</p>
+                        <a href="mailto:contact@speechtherapyhub.org" class="btn">Email Us</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Resource Recommendations</h3>
+                        <p>Looking for specific resources not found on our site? Let us know what you're seeking, and our team will help direct you to appropriate evidence-based materials.</p>
+                        <a href="#" class="btn">Submit Request</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Join Our Network</h3>
+                        <p>Connect with other speech-language pathologists and rehabilitation specialists. Share resources, discuss clinical approaches, and support professional growth.</p>
+                        <a href="#" class="btn">Join Network</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Speech Therapy Rehabilitation Resource Hub. All rights reserved.</p>
+            <p>This website is for informational purposes only and does not provide medical advice. Always consult with qualified healthcare professionals regarding specific medical conditions.</p>
+            <p>
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Use</a> | 
+                <a href="#">Accessibility</a>
+            </p>
+        </div>
+    </footer>
 </body>
-</html> 
+</html>
